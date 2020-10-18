@@ -10,3 +10,5 @@ export const theme = {
     description: 14,
   },
 };
+
+export const bigHitSlop = { top: 20, bottom: 20, left: 20, right: 20 };

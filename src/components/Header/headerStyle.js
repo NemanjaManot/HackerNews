@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../utils/config';
 
-const headerHeight = 45;
+const headerHeight = 50;
 
 export const styles = StyleSheet.create({
   header: {
