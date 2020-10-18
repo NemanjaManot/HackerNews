@@ -8,9 +8,12 @@ import PaginationMenu from '../../components/PaginationMenu';
 // Styles
 import { styles } from './mainStyles';
 
+const limit = 20;
+
 const Main = () => {
   const [ids, setIds] = useState([]);
   const [news, setNews] = useState([]);
+  const [offset, setOffset] = useState(0);
 
   async function getNews() {
     try {
@@ -34,11 +37,10 @@ const Main = () => {
     getNews();
   }, []);
 
-  useEffect(() => {
+  const handleGetDetailed = () => {
     if (ids.length) {
       const arr = [];
-
-      ids.slice(0, 5).forEach((id) => {
+      ids.slice(offset, limit + offset).forEach((id) => {
         arr.push(getNewsById(id));
       });
 
@@ -46,21 +48,29 @@ const Main = () => {
         setNews(values);
       });
     }
-  }, [ids]);
+  };
+
+  useEffect(() => {
+    handleGetDetailed();
+  }, [ids, offset]);
+
+  const handleMore = () => {
+    setOffset(offset + limit);
+  };
+
+  const handlePrev = () => {
+    setOffset(offset - limit);
+  };
 
   return (
     <View style={styles.mainWrapper}>
       <Header onRefresh={() => console.log('on refresh')} />
       <ScrollView style={styles.scrollingContentWrapper}>
         {news.map((item, index) => (
-          <ListItem key={item.id} index={index + 1} {...item} />
+          <ListItem key={item.id} index={offset + index + 1} {...item} />
         ))}
       </ScrollView>
-      <PaginationMenu
-        isPrevDisabled={true} // TODO
-        onMorePress={() => console.log('on more press')}
-        onPrevPress={() => console.log('on prev press')}
-      />
+      <PaginationMenu isPrevDisabled={offset < limit} onMorePress={handleMore} onPrevPress={handlePrev} />
     </View>
   );
 };
