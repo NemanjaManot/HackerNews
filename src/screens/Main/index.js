@@ -9,6 +9,7 @@ import PaginationMenu from '../../components/PaginationMenu';
 import { styles } from './mainStyles';
 
 const limit = 20;
+const refreshInterval = 30000;
 
 const Main = () => {
   const [ids, setIds] = useState([]);
@@ -36,6 +37,13 @@ const Main = () => {
 
   useEffect(() => {
     getNews();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleGetDetailed();
+    }, refreshInterval);
+    return () => clearInterval(interval);
   }, []);
 
   const handleGetDetailed = () => {
