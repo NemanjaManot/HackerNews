@@ -69,6 +69,9 @@ const Main = () => {
   };
 
   const handleRefresh = () => {
+    if (offset === 0) {
+      getNews();
+    }
     setOffset(0);
   };
 
