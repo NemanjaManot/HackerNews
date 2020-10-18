@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginBottom: headerFooterHeight,
   },
+  activityIndicator: {
+    marginTop: '70%',
+  },
 });

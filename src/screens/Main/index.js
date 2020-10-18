@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 // Components
 import Header from '../../components/Header';
@@ -14,6 +14,7 @@ const Main = () => {
   const [ids, setIds] = useState([]);
   const [news, setNews] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function getNews() {
     try {
@@ -39,12 +40,14 @@ const Main = () => {
 
   const handleGetDetailed = () => {
     if (ids.length) {
+      setIsLoading(true);
       const arr = [];
       ids.slice(offset, limit + offset).forEach((id) => {
         arr.push(getNewsById(id));
       });
 
       Promise.all(arr).then((values) => {
+        setIsLoading(false);
         setNews(values);
       });
     }
@@ -66,9 +69,11 @@ const Main = () => {
     <View style={styles.mainWrapper}>
       <Header onRefresh={() => console.log('on refresh')} />
       <ScrollView style={styles.scrollingContentWrapper}>
-        {news.map((item, index) => (
-          <ListItem key={item.id} index={offset + index + 1} {...item} />
-        ))}
+        {isLoading ? (
+          <ActivityIndicator size="large" style={styles.activityIndicator} />
+        ) : (
+          news.map((item, index) => <ListItem key={item.id} index={offset + index + 1} {...item} />)
+        )}
       </ScrollView>
       <PaginationMenu isPrevDisabled={offset < limit} onMorePress={handleMore} onPrevPress={handlePrev} />
     </View>
