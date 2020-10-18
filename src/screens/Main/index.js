@@ -7,6 +7,8 @@ import ListItem from '../../components/ListItem';
 import PaginationMenu from '../../components/PaginationMenu';
 // Styles
 import { styles } from './mainStyles';
+// Theme
+import { theme } from '../../utils/config';
 
 const limit = 20;
 const refreshInterval = 30000;
@@ -40,10 +42,13 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getNews();
-    }, refreshInterval);
-    return () => clearInterval(interval);
+    if (!isLoading) {
+      const interval = setInterval(() => {
+        getNews();
+      }, refreshInterval);
+
+      return () => clearInterval(interval);
+    }
   }, []);
 
   const handleGetDetailed = () => {
@@ -82,7 +87,7 @@ const Main = () => {
       <Header onRefresh={handleRefresh} />
       <ScrollView style={styles.scrollingContentWrapper}>
         {isLoading ? (
-          <ActivityIndicator size="large" style={styles.activityIndicator} />
+          <ActivityIndicator size="large" style={styles.activityIndicator} color={theme.colors.primary} />
         ) : (
           news.map((item, index) => <ListItem key={item.id} index={offset + index + 1} {...item} />)
         )}
