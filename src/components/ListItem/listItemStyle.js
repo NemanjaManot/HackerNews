@@ -10,21 +10,23 @@ export const styles = StyleSheet.create({
   },
   firstRow: {
     flexDirection: 'row',
+    paddingLeft: 22,
   },
   secondRow: {
     flexDirection: 'row',
-    paddingLeft: 16,
+    paddingLeft: 26,
     paddingVertical: 4,
   },
   thirdRow: {
     flexDirection: 'row',
-    paddingLeft: 16,
+    paddingLeft: 26,
   },
 
   // Text Styles
   index: {
     fontSize: theme.fontSize.text,
     color: theme.colors.lightGray,
+    position: 'absolute',
   },
   title: {
     fontSize: theme.fontSize.text,
