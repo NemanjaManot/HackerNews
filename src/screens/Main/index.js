@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 // Components
 import Header from '../../components/Header';
 import ListItem from '../../components/ListItem';
@@ -19,7 +19,9 @@ const Main = () => {
   return (
     <View style={styles.mainWrapper}>
       <Header onRefresh={() => console.log('on refresh')} />
-      <ListItem index={1} title={data.title} url={data.url} score={data.score} by={data.by} time={data.time} />
+      <ScrollView style={styles.scrollingContentWrapper}>
+        <ListItem index={1} title={data.title} url={data.url} score={data.score} by={data.by} time={data.time} />
+      </ScrollView>
       <PaginationMenu
         isPrevDisabled={true}
         onMorePress={() => console.log('on more press')}

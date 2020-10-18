@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../utils/config';
-
-const headerHeight = 50;
+import { headerFooterHeight } from '../../utils/config';
 
 export const styles = StyleSheet.create({
   header: {
-    height: headerHeight,
+    height: headerFooterHeight,
     flexDirection: 'row',
     backgroundColor: theme.colors.primary,
     justifyContent: 'space-between',

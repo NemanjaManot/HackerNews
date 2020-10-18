@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../utils/config';
-
-const footerHeight = 50;
+import { theme, headerFooterHeight } from '../../utils/config';
 
 export const styles = StyleSheet.create({
   paginationMenuWrapper: {
-    height: footerHeight,
+    height: headerFooterHeight,
     position: 'absolute',
     bottom: 0,
     left: 0,

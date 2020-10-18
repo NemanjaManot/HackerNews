@@ -4,7 +4,9 @@ import { theme } from '../../utils/config';
 export const styles = StyleSheet.create({
   itemWrapper: {
     paddingHorizontal: 8,
-    paddingVertical: 8,
+    paddingVertical: 16,
+    borderBottomColor: theme.colors.lighterGrey,
+    borderBottomWidth: 0.7,
   },
   firstRow: {
     flexDirection: 'row',
