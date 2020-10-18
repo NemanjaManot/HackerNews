@@ -60,3 +60,9 @@ Make sure you have **Android Emulator** up & running.
 - Date-fns - formatting time
 - PropTypes - for type checking
 - Prettier - for code formatting
+
+## UI
+
+<img src="https://user-images.githubusercontent.com/18553180/96376905-f5f72400-1181-11eb-912f-17d365bd1352.png" width="230" height="500">
+
+
