@@ -30,6 +30,8 @@ export const styles = StyleSheet.create({
     fontSize: theme.fontSize.text,
     color: theme.colors.secondaryColor,
     paddingLeft: 4,
+    flexWrap: 'wrap',
+    flex: 1,
   },
   url: {
     fontSize: theme.fontSize.description,

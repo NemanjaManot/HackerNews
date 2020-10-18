@@ -1,12 +1,14 @@
 import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
-// screens
+// Screens
 import Main from './screens/Main';
+// Config
+import { theme } from './utils/config';
 
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" backgroundColor={theme.colors.primary} />
       <SafeAreaView>
         <Main />
       </SafeAreaView>
