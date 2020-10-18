@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, Text } from 'react-native';
+import { formatDistance } from 'date-fns';
 // Styles
 import { styles } from './listItemStyle';
 
 const ListItem = ({ index, title, url, score, by, time }) => {
+  const getFormattedTime = useMemo(() => formatDistance(new Date(), time), [time]);
+
   return (
     <View style={styles.itemWrapper}>
       <View style={styles.firstRow}>
@@ -21,7 +24,7 @@ const ListItem = ({ index, title, url, score, by, time }) => {
         <Text style={styles.points}>{score} points </Text>
         <Text style={styles.byLabel}>by </Text>
         <Text style={styles.by}>{by} </Text>
-        <Text style={styles.time}>{time} hour ago</Text>
+        <Text style={styles.time}>{getFormattedTime}</Text>
       </View>
     </View>
   );
