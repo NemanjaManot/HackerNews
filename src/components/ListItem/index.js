@@ -4,6 +4,8 @@ import { View, Text } from 'react-native';
 import { formatDistance, fromUnixTime } from 'date-fns';
 // Styles
 import { styles } from './listItemStyle';
+// Helpers
+import { getHostname } from '../../utils/helpers';
 
 const ListItem = ({ index, title, url, score, by, time }) => {
   const getFormattedTime = useMemo(() => formatDistance(new Date(), fromUnixTime(time)), [time]);
@@ -18,7 +20,7 @@ const ListItem = ({ index, title, url, score, by, time }) => {
       </View>
 
       <View style={styles.secondRow}>
-        <Text style={styles.url}>{url}</Text>
+        <Text style={styles.url}>{url ? getHostname(url) : '-'}</Text>
       </View>
 
       <View style={styles.thirdRow}>
@@ -34,10 +36,14 @@ const ListItem = ({ index, title, url, score, by, time }) => {
 ListItem.propTypes = {
   index: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   score: PropTypes.number.isRequired,
   by: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
+};
+
+ListItem.defaultProps = {
+  url: null,
 };
 
 export default ListItem;
