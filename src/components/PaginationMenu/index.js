@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity } from 'react-native';
 // Styles
 import { styles } from './paginationMenuStyles';
@@ -17,6 +18,12 @@ const PaginationMenu = ({ onPrevPress, onMorePress, isPrevDisabled }) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+PaginationMenu.propTypes = {
+  onPrevPress: PropTypes.func.isRequired,
+  onMorePress: PropTypes.func.isRequired,
+  isPrevDisabled: PropTypes.bool.isRequired,
 };
 
 export default PaginationMenu;

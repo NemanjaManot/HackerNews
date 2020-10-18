@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { formatDistance, fromUnixTime } from 'date-fns';
 // Styles
@@ -28,6 +29,15 @@ const ListItem = ({ index, title, url, score, by, time }) => {
       </View>
     </View>
   );
+};
+
+ListItem.propTypes = {
+  index: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  by: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
 };
 
 export default ListItem;
