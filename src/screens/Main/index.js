@@ -41,7 +41,7 @@ const Main = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      handleGetDetailed();
+      getNews();
     }, refreshInterval);
     return () => clearInterval(interval);
   }, []);
