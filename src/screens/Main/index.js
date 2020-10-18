@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
 // Components
 import Header from '../../components/Header';
@@ -41,7 +41,7 @@ const Main = () => {
     }
   }, []);
 
-  const handleGetDetailed = () => {
+  const handleGetDetailed = useCallback(() => {
     if (ids.length) {
       setIsLoading(true);
       const arr = [];
@@ -54,11 +54,11 @@ const Main = () => {
         setNews(values);
       });
     }
-  };
+  }, [ids, offset]);
 
   useEffect(() => {
     handleGetDetailed();
-  }, [ids, offset]);
+  }, [handleGetDetailed, ids, offset]);
 
   const handleMore = () => {
     setOffset(offset + limit);
