@@ -65,9 +65,13 @@ const Main = () => {
     setOffset(offset - limit);
   };
 
+  const handleRefresh = () => {
+    setOffset(0);
+  };
+
   return (
     <View style={styles.mainWrapper}>
-      <Header onRefresh={() => console.log('on refresh')} />
+      <Header onRefresh={handleRefresh} />
       <ScrollView style={styles.scrollingContentWrapper}>
         {isLoading ? (
           <ActivityIndicator size="large" style={styles.activityIndicator} />
