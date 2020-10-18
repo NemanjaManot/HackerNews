@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, ScrollView, ActivityIndicator } from 'react-native';
-import axios from 'axios';
 // Components
 import Header from '../../components/Header';
 import ListItem from '../../components/ListItem';
@@ -9,6 +8,8 @@ import PaginationMenu from '../../components/PaginationMenu';
 import { styles } from './mainStyles';
 // Theme
 import { theme } from '../../utils/config';
+// Services
+import NewsService from '../../services/newsService';
 
 const limit = 20;
 const refreshInterval = 30000;
@@ -19,23 +20,12 @@ const Main = () => {
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function getNews() {
-    try {
-      const response = await axios.get('https://hacker-news.firebaseio.com/v0/beststories.json');
-      setIds(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const getNews = async () => {
+    const fetchedIds = await NewsService.getNews();
+    setIds(fetchedIds);
+  };
 
-  async function getNewsById(id) {
-    try {
-      const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const getNewsById = async (id) => await NewsService.getNewsById(id);
 
   useEffect(() => {
     getNews();
