@@ -1,3 +1,5 @@
+export const apiUrl = 'https://hacker-news.firebaseio.com/v0';
+
 export const theme = {
   colors: {
     primary: '#FFA500',

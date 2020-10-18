@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+// Config
 import { headerFooterHeight } from '../../utils/config';
 
 export const styles = StyleSheet.create({

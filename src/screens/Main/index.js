@@ -49,9 +49,9 @@ const Main = () => {
         arr.push(getNewsById(id));
       });
 
-      Promise.all(arr).then((values) => {
+      Promise.all(arr).then((value) => {
         setIsLoading(false);
-        setNews(values);
+        setNews(value);
       });
     }
   }, [ids, offset]);

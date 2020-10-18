@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+// Config
 import { theme } from '../../utils/config';
 
 export const styles = StyleSheet.create({
