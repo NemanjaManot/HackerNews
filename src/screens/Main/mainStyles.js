@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 // Config
-import { headerFooterHeight } from '../../utils/config';
+import { headerFooterHeight, theme } from '../../utils/config';
 
 export const styles = StyleSheet.create({
   mainWrapper: {
@@ -12,5 +12,14 @@ export const styles = StyleSheet.create({
   },
   activityIndicator: {
     marginTop: '70%',
+  },
+
+  globalSafeArea: {
+    flex: 1,
+  },
+  // Status top bar styles (iOS only)
+  iosSafeAreaView: {
+    flex: 0,
+    backgroundColor: theme.colors.primary,
   },
 });
